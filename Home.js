@@ -61,6 +61,7 @@ const Home = () => {
   }
   return (
     <View style={styles.container}>
+      <Text style={styles.heading}>TodoEase</Text>
       <ScrollView style={styles.todoList}>
         {todo &&
           todo.map((text, index) => {
@@ -95,6 +96,11 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  heading: {
+    fontFamily: "Poppins-SemiBold",
+    marginTop: 50,
+    fontSize: 26,
+  },
   container: {
     flex: 1,
     justifyContent: "flex-start",
