@@ -1,19 +1,12 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { useState, useEffect } from "react";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Keyboard } from "react-native";
 import Todo from "./Todo";
 import InputTodo from "./InputTodo";
 import { StatusBar } from "expo-status-bar";
-import { AntDesign } from "@expo/vector-icons";
-const Home = ({ navigation }) => {
+const Home = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
     "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
@@ -27,41 +20,6 @@ const Home = ({ navigation }) => {
     Keyboard.dismiss();
     storeData();
   };
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: "TodoEase",
-      headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingHorizontal: 8,
-              paddingVertical: 2,
-              borderRadius: 4,
-              borderWidth: 1.5,
-            }}
-          >
-            <Text
-              style={{
-                marginRight: 6,
-                fontFamily: "Poppins-SemiBold",
-                fontSize: 12,
-                marginTop: 4,
-                color: "#181818",
-              }}
-            >
-              Login With
-            </Text>
-            <AntDesign name="google" size={14} color="#181818" />
-          </View>
-        </TouchableOpacity>
-      ),
-    });
-  }, []);
 
   const storeData = async () => {
     try {
